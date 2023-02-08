@@ -15,22 +15,10 @@ import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import AddIcon from '@mui/icons-material/Add'
-import Box from '@mui/material/Box'
-import Modal from '@mui/material/Modal'
 import Toast from '../Common/ToastCommon'
+import CommonModal from '../Common/CommonModal'
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 600,
-  height: 250,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-}
+
 const UserList = () => {
 
   const navigate = useNavigate()
@@ -60,43 +48,7 @@ const UserList = () => {
 
   return (
     <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          {/* <div className='CloseIcon'>
-          <IconButton size="large">
-
-          <HighlightOffIcon sx={{color:"#1976d2"}} />
-          </IconButton>
-          </div> */}
-          <Typography
-            id="modal-modal-title"
-            variant="h4"
-            component="h1"
-            sx={{ textAlign: 'center', color: 'dark', margin: '0px 0px 25px' }}
-          >
-            Are you sure?
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 4 }}>
-            Do you really want to delete these records? This process cannot be
-            undone.
-          </Typography>
-          <div className="modal-button">
-            <div className="modal-cancle-button">
-              <Button onClick={handleClose} variant="contained">
-                Cancel
-              </Button>
-            </div>
-            <Button onClick={handleSure} variant="contained">
-              Delete
-            </Button>
-          </div>
-        </Box>
-      </Modal>
+      <CommonModal open={open}  handleSure={handleSure}  handleClose={handleClose}/> 
       <div className="list-button">
         <Typography
           sx={{ m: 2, width: 200, color: '#4058c2', margin: '0 0 23px' }}

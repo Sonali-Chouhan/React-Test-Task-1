@@ -9,6 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Addrole, UpdateRole } from '../Redux/RoleSlice'
 import { RoleValidations } from '../Common/RoleValidation'
 import { Grid, Typography } from '@material-ui/core'
+import Toast from '../Common/ToastCommon'
 
 const AddRole = () => {
   
@@ -27,10 +28,12 @@ const AddRole = () => {
     onSubmit: (values, { resetForm }) => {
       if (id) {
         dispatch(UpdateRole(values))
+        Toast('Update Roles successfully...!', 'success')
       } else {
         dispatch(Addrole(values))
+        Toast('Create Roles successfully...!', 'success')
       }
-      resetForm()
+      resetForm();
 
       navigate('/rolelist')
     },
@@ -110,7 +113,7 @@ const AddRole = () => {
                   </div>
                   <Button
                     color="primary"
-                    variant="contained"
+                    variant="outlined"
                     onClick={handleCancel}
                   >
                     Cancel

@@ -16,6 +16,8 @@ import AddIcon from '@mui/icons-material/Add'
 import { useDispatch, useSelector } from 'react-redux'
 import { Typography } from '@material-ui/core'
 import { DeleteRole, EditRole } from '../Redux/RoleSlice'
+import CommonModal from '../Common/CommonModal'
+import Toast from '../Common/ToastCommon'
 
 const style = {
   position: 'absolute',
@@ -50,11 +52,13 @@ const RoleList = () => {
   const handleSure = () => {
     dispatch(DeleteRole(selectId))
     setOpen(false)
+    Toast('Delete Role successfully...!! ', 'error')
   }
 
   return (
 
     <div>
+    <CommonModal open={open}  handleSure={handleSure}  handleClose={handleClose}/> 
       <div className="list-button">
         <Typography
           sx={{ m: 2, width: 200, color: '#4058c2', margin: '0 0 23px' }}
@@ -128,47 +132,7 @@ const RoleList = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            {/* <div className='CloseIcon'>
-          <IconButton size="large">
-
-          <HighlightOffIcon sx={{color:"#1976d2"}} />
-          </IconButton>
-          </div> */}
-            <Typography
-              id="modal-modal-title"
-              variant="h4"
-              component="h1"
-              sx={{
-                textAlign: 'center',
-                color: 'dark',
-                margin: '0px 0px 25px',
-              }}
-            >
-              Are you sure?
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 4 }}>
-              Do you really want to delete these records? This process cannot be
-              undone.
-            </Typography>
-            <div className="modal-button">
-              <div className="modal-cancle-button">
-                <Button onClick={handleClose} variant="contained">
-                  Cancel
-                </Button>
-              </div>
-              <Button onClick={handleSure} variant="contained">
-                Delete
-              </Button>
-            </div>
-          </Box>
-        </Modal>
+        
       </div>
     </div>
   )

@@ -32,10 +32,10 @@ const AddUser = () => {
     onSubmit: (values, { resetForm }) => {
       if (id) {
         dispatch(UpdateUser(values))
-        Toast('Update successfully....!', 'success')
+        Toast('Update User successfully....!', 'success')
       } else {
         dispatch(Adduser(values))
-        Toast('Create successfully....!', 'success')
+        Toast('Create User successfully....!', 'success')
       }
       resetForm()
       navigate('/')
@@ -184,7 +184,7 @@ const AddUser = () => {
                 </div>
                 <Button
                   color="primary"
-                  variant="contained"
+                  variant="outlined"
                   onClick={handleCancel}
                 >
                   Cancel
